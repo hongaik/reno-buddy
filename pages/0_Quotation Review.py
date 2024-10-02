@@ -38,3 +38,26 @@ if uploaded_file is not None:
             assessment_results = review_quotation(uploaded_file.name)
             st.success("Evaluation completed!", icon="✅")
             st.write(assessment_results)
+
+option = st.selectbox(
+    "Or try one of these sample documents!",
+    (
+    "",
+    "Basukilam Renovation Quotation.pdf", 
+    "Nonsense.pdf"
+     )
+)
+
+if option == "Basukilam Renovation Quotation.pdf":
+    uploaded_file = "sample_renovation_quote.pdf"
+elif option == "Nonsense.pdf":
+    uploaded_file = "non_sample_renovation_quote.pdf"
+
+if option != "":
+    if is_renovation_quotation(uploaded_file).lower() == "no":
+        st.warning("Sorry, it doesn't look like you have uploaded a renovation quotation 😔. Please try another document!", icon="⚠️")
+    else:
+        with st.spinner(f"Evaluating {uploaded_file} now! Please give me a minute...😘"):
+            assessment_results = review_quotation(uploaded_file)
+            st.success("Evaluation completed!", icon="✅")
+            st.write(assessment_results)
