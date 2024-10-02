@@ -2,4 +2,4 @@ streamlit
 crewai
 crewai-tools
 openai
-chromadb==0.3.29
+chromadb
