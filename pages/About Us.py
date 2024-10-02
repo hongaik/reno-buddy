@@ -1,6 +1,8 @@
 import streamlit as st
 
 st.markdown("""
+## Contact: goh.hongaik@gmail.com
+            
 ## Project Scope
 
 To most homeowners, renovation is an exciting opportunity to transform their living space into a personalized and comfortable home, but it can also be a complex process filled with regulations, decisions, and challenges. Even for experienced contractors, remembering the nitty gritties of all the policies is close to impossible.
