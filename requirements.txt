@@ -168,8 +168,7 @@ pytest==8.3.3
 python-dateutil 
 python-dotenv==1.0.1
 pytube==15.0.0
-pytz 
-pywin32==306
+pytz
 PyYAML==6.0.2
 ratelimiter==1.2.0.post0
 referencing==0.35.1
