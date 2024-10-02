@@ -103,7 +103,7 @@ MarkupSafe==2.1.5
 marshmallow==3.22.0
 matplotlib==3.9.2
 mdurl==0.1.2
-mkl-service==2.4.0
+mkl-service
 mkl_fft
 mkl_random
 mmh3==5.0.1
