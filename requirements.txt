@@ -2,4 +2,8 @@ streamlit
 crewai
 crewai-tools
 openai
-chromadb
+langchain
+langchain-openai
+langchain-experimental
+tiktoken
+lolviz
