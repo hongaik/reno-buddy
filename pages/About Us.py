@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.markdown("""
-## Contact: goh.hongaik@gmail.com
+#### Contact: goh.hongaik@gmail.com
             
 ## Project Scope
 
