@@ -8,7 +8,7 @@ from crewai_tools import (
 from crewai import Agent, Task, Crew
 import hmac
 
-client = OpenAI(api_key="")
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # <---------- Functions for User Query ---------->
 def get_completion(prompt, model="gpt-4o-mini"):
@@ -85,7 +85,7 @@ def check_password():
     """Returns `True` if the user had the correct password."""
     def password_entered():
         """Checks whether a password entered by the user is correct."""
-        if hmac.compare_digest(st.session_state["password"], "asdf"):
+        if hmac.compare_digest(st.session_state["password"], st.secrets["APP_PW"]):
             st.session_state["password_correct"] = True
             del st.session_state["password"]  # Don't store the password.
         else:
