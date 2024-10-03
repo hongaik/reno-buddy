@@ -1,6 +1,6 @@
 import streamlit as st
 from openai import OpenAI
-import os
+import os, shutil
 from crewai_tools import (
   PDFSearchTool,
   WebsiteSearchTool
@@ -10,6 +10,7 @@ from utils import *
 st.set_page_config(page_title="Your Trusty Renovation Rules Buddy",page_icon=":hammer:")
 
 if os.path.exists('db'):
+    shutil.rmtree('db')
     for root, dirs, files in os.walk('db'):
         for file in files:
             st.write(os.path.join(root, file))
