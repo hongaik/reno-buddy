@@ -155,6 +155,7 @@ def review_quotation(pdf):
     tool_websearch4 = WebsiteSearchTool("https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation/guidelines/electrical-works/")
     tool_websearch5 = WebsiteSearchTool("https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation/guidelines/airconditioner-installation-works/")
     tool_read_quotation = PDFSearchTool(pdf)
+    tool_read_quotation.cache_function = False
 
     # checker_agent = Agent(
     #     role="Checking Agent",
@@ -220,6 +221,8 @@ def review_quotation(pdf):
 
 def is_renovation_quotation(pdf):
     tool = PDFSearchTool(pdf)
+    tool.cache_function = False
+    
     agent = Agent(
             role="Checking Agent",
             goal="Check whether the provided PDF is a renovation quotation document",
