@@ -10,6 +10,10 @@ from utils import *
 import sqlite3
 st.set_page_config(page_title="Your Trusty Renovation Rules Buddy",page_icon=":hammer:")
 
+for root, dirs, files in os.walk('.'):
+    for file in files:
+        st.text(os.path.join(root, file))
+
 # <---------- Password Protect ---------->
 if not check_password():  
     st.stop()

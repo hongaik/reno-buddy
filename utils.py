@@ -191,7 +191,6 @@ def review_quotation(pdf):
     tool_websearch4 = WebsiteSearchTool("https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation/guidelines/electrical-works/")
     tool_websearch5 = WebsiteSearchTool("https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation/guidelines/airconditioner-installation-works/")
     tool_read_quotation = PDFSearchTool(pdf)
-    # tool_read_quotation.cache_function = False
 
     # checker_agent = Agent(
     #     role="Checking Agent",
@@ -249,15 +248,13 @@ def review_quotation(pdf):
     crew = Crew(
         agents=[quote_agent],
         tasks=[quote_task],
-        verbose=False,
-        # cache=False
+        verbose=False
     )
 
     return crew.kickoff()
 
 def is_renovation_quotation(pdf):
     tool = PDFSearchTool(pdf)
-    # tool.cache_function = False
 
     agent = Agent(
             role="Checking Agent",
@@ -281,7 +278,6 @@ def is_renovation_quotation(pdf):
     crew = Crew(
         agents=[agent], 
         tasks=[task],
-        verbose=False,
-        # cache=False,
+        verbose=False
     )
     return crew.kickoff()
