@@ -44,4 +44,5 @@ Taketa's primary objectives are:
 # Coming Soon!
 
 - **Voice accessibility**: Some things are easier said that written. Also, contractors are frequently on the road and leverage voice message more than written ones.
+- **Upload Your Own File**: Currently you are unable to upload your own file as CrewAI must read a physicalised file; Streamlit's uploader function does not store the file, it merely reads it in memory. For it to work it needs to connect to a file storage system eg. Google Drive
 """)
