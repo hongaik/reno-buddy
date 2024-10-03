@@ -240,9 +240,9 @@ def is_renovation_quotation(pdf):
             agent=agent
         )
     crew = Crew(
-        agents=[agent],
+        agents=[agent], 
         tasks=[task],
         verbose=False,
-        cache=False
+        cache=False,
     )
     return crew.kickoff()
