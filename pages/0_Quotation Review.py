@@ -9,11 +9,12 @@ from crewai import Agent, Task, Crew
 from utils import *
 st.set_page_config(page_title="Your Trusty Renovation Rules Buddy",page_icon=":hammer:")
 
-if os.path.exists('db/f7aabe85-632f-4c73-b0c8-8af38ba1f8e1'):
-    shutil.rmtree('db/f7aabe85-632f-4c73-b0c8-8af38ba1f8e1')
+# if os.path.exists('db/f7aabe85-632f-4c73-b0c8-8af38ba1f8e1'):
+#     shutil.rmtree('db/f7aabe85-632f-4c73-b0c8-8af38ba1f8e1')
 for root, dirs, files in os.walk('db'):
     for file in files:
-        st.write(os.path.join(root, file))
+        st.write("deleting " + os.path.join(root, file))
+        os.remove(os.path.join(root, file))
 
 # <---------- Password Protect ---------->
 if not check_password():  
