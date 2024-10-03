@@ -10,10 +10,6 @@ from utils import *
 import sqlite3
 st.set_page_config(page_title="Your Trusty Renovation Rules Buddy",page_icon=":hammer:")
 
-for root, dirs, files in os.walk('.'):
-    for file in files:
-        st.text(os.path.join(root, file))
-
 # <---------- Password Protect ---------->
 if not check_password():  
     st.stop()
@@ -34,7 +30,11 @@ with st.expander("PLEASE READ DISCLAIMER BEFORE PROCEEDING"):
     """)
 
 uploaded_file = st.file_uploader("Upload your renovation quotation in PDF", type='pdf')
-         
+
+for root, dirs, files in os.walk('.'):
+    for file in files:
+        st.text(os.path.join(root, file))
+
 if uploaded_file is not None:
     clear_sqlite3_db_file()
     if is_renovation_quotation(uploaded_file.name).lower() == "no":
