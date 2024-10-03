@@ -16,6 +16,10 @@ for root, dirs, files in os.walk('db'):
         st.write("deleting " + os.path.join(root, file))
         os.remove(os.path.join(root, file))
 
+import sqlite3
+conn = sqlite3.connect('chroma.sqlite3')
+conn.close()
+st.write(os.listdir('db'))
 # <---------- Password Protect ---------->
 if not check_password():  
     st.stop()
