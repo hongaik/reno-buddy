@@ -10,7 +10,9 @@ from utils import *
 st.set_page_config(page_title="Your Trusty Renovation Rules Buddy",page_icon=":hammer:")
 
 if os.path.exists('db'):
-    st.write(os.listdir('db'))
+    for root, dirs, files in os.walk('db'):
+        for file in files:
+            st.write(os.path.join(root, file))
 
 # <---------- Password Protect ---------->
 if not check_password():  
