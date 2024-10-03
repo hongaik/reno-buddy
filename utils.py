@@ -212,7 +212,8 @@ def review_quotation(pdf):
     crew = Crew(
         agents=[quote_agent],
         tasks=[quote_task],
-        verbose=False
+        verbose=False,
+        cache=False
     )
 
     return crew.kickoff()
@@ -241,6 +242,7 @@ def is_renovation_quotation(pdf):
     crew = Crew(
         agents=[agent],
         tasks=[task],
-        verbose=False
+        verbose=False,
+        cache=False
     )
     return crew.kickoff()
