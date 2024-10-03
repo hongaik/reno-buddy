@@ -7,19 +7,9 @@ from crewai_tools import (
 )
 from crewai import Agent, Task, Crew
 from utils import *
+import sqlite3
 st.set_page_config(page_title="Your Trusty Renovation Rules Buddy",page_icon=":hammer:")
 
-# if os.path.exists('db/f7aabe85-632f-4c73-b0c8-8af38ba1f8e1'):
-#     shutil.rmtree('db/f7aabe85-632f-4c73-b0c8-8af38ba1f8e1')
-for root, dirs, files in os.walk('db'):
-    for file in files:
-        st.write("deleting " + os.path.join(root, file))
-        os.remove(os.path.join(root, file))
-
-import sqlite3
-conn = sqlite3.connect('chroma.sqlite3')
-conn.close()
-st.write(os.listdir('db'))
 # <---------- Password Protect ---------->
 if not check_password():  
     st.stop()
@@ -42,6 +32,7 @@ with st.expander("PLEASE READ DISCLAIMER BEFORE PROCEEDING"):
 uploaded_file = st.file_uploader("Upload your renovation quotation in PDF", type='pdf')
          
 if uploaded_file is not None:
+    clear_sqlite3_db_file()
     if is_renovation_quotation(uploaded_file.name).lower() == "no":
         st.warning("Sorry, it doesn't look like you have uploaded a renovation quotation 😔. Please try another document!", icon="⚠️")
     else:
@@ -65,6 +56,7 @@ elif option == "Nonsense.pdf":
     uploaded_file = "non_sample_renovation_quote.pdf"
 
 if option != "":
+    clear_sqlite3_db_file()
     if is_renovation_quotation(uploaded_file).lower() == "no":
         st.warning("Sorry, it doesn't look like you have uploaded a renovation quotation 😔. Please try another document!", icon="⚠️")
     else:

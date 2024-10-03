@@ -7,6 +7,7 @@ from crewai_tools import (
 )
 from crewai import Agent, Task, Crew
 import hmac
+import sqlite3
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -148,6 +149,41 @@ def generate_response_to_user_query(user_input):
     return crew.kickoff(inputs={"user_input": user_input})
 
 # <---------- Functions for Quotation Review ---------->
+
+def clear_sqlite3_db_file():
+
+    # Path to your SQLite3 database file
+    db_path = 'db/chroma.sqlite3'
+
+    if os.path.exists(db_path):
+        # Connect to the database
+        conn = sqlite3.connect(db_path)
+
+        # Create a cursor object to execute SQL queries
+        cur = conn.cursor()
+
+        # Step 1: Retrieve and list all the tables in the database
+        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        tables = cur.fetchall()
+
+        for table in tables:
+            table_name = table[0]
+            if table_name == 'embeddings': # or table_name == 'collections':
+            # Step 2: Delete all rows from the table
+                cur.execute(f"DELETE FROM {table_name};")
+
+            # # Optional: Check if the table is cleared
+            # cur.execute(f"SELECT COUNT(*) FROM {table_name};")
+            # row_count = cur.fetchone()[0]
+            # print(f"Rows remaining in {table_name}: {row_count}")
+
+        # Commit the changes to the database
+        conn.commit()
+
+        # Close the connection
+        conn.close()
+
+
 def review_quotation(pdf):
     tool_websearch1 = WebsiteSearchTool("https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation/guidelines/building-works/")
     tool_websearch2 = WebsiteSearchTool("https://www.hdb.gov.sg/residential/living-in-an-hdb-flat/renovation/guidelines/water-and-sanitary-plumbing-works-gas-works/")
