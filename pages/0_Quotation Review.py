@@ -9,7 +9,8 @@ from crewai import Agent, Task, Crew
 from utils import *
 st.set_page_config(page_title="Your Trusty Renovation Rules Buddy",page_icon=":hammer:")
 
-st.write(os.listdir('db'))
+if os.path.exists('db'):
+    st.write(os.listdir('db'))
 
 # <---------- Password Protect ---------->
 if not check_password():  
