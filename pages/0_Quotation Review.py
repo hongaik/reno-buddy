@@ -17,7 +17,7 @@ if not check_password():
 # <---------- App ---------->
 
 user_input = st.text_input(label="input pdf link")
-if user_input is not None:
+if user_input != "":
     st.text(user_input)
     is_renovation_quotation(user_input)
 
