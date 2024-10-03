@@ -16,11 +16,6 @@ if not check_password():
 
 # <---------- App ---------->
 
-user_input = st.text_input(label="input pdf link")
-if user_input != "":
-    st.text(user_input)
-    is_renovation_quotation(user_input)
-
 st.title("Welcome 👋!")
 st.markdown("I am your friendly HDB Renovation Assistant, Taketa :sunglasses:. Here, you can upload your renovation quotation in PDF and I will review it with HDB's guidelines!")
 
